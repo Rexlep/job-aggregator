@@ -2,7 +2,7 @@ import json
 
 import httpx
 
-from app.collectors.jobvision import get_jobs
+from app.collectors.jobvision import JobVisionCollector, get_jobs
 
 
 def test_get_jobs_returns_normalized_jobs() -> None:
@@ -48,3 +48,7 @@ def test_get_jobs_returns_normalized_jobs() -> None:
         ]
     finally:
         client.close()
+
+
+def test_jobvision_collector_implements_base_contract() -> None:
+    assert isinstance(JobVisionCollector(), object)
